@@ -22,4 +22,4 @@ done
 
 [ -d ~/backup] && echo "Directory Exists" || mkdir ~/backup
 
-ls -l
+ls -ls --human-readable
