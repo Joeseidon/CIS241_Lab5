@@ -28,7 +28,7 @@ for f in "$@"; do
 			find .//. ! -name . -print | grep -c //
 			echo "Memory Usage:"
 			#Display the number of bytes used by files and directories in the current directory 
-			find . -type f -name . -exec du -ch {} + | grep total$
+			{ find . -type f -name *.* -printf "%s+"; echo 0; } | bc
 	elif [[ "$f" = "--help" ]]
 		then 
 			echo "To run this file, type sh followed by test.sh (this program)."
@@ -38,6 +38,6 @@ for f in "$@"; do
 	fi
 done
 
-
+echo "\nAttempting to make backup directory...\n"
 #Creates a backup folder in the home directory if it doesn't already exist 
 [ -d ~/backup ] && echo "Directory Exists" || mkdir ~/backup
