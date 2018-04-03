@@ -6,6 +6,12 @@ if [ $# -eq 0 ]
 		exit 1
 fi
 
+if [[ $# > 1 ]]
+	then
+		echo "Only one argument"
+		exit 1
+fi
+
 for f in "$@"; do
 	echo "$f"
 	if [[ "$f" = "-1" ]]
@@ -20,6 +26,9 @@ for f in "$@"; do
 			echo "help entered"
 	fi
 done
+
+find . ! -name . -prune -print | grep -c /
+
 
 [ -d ~/backup ] && echo "Directory Exists" || mkdir ~/backup
 
