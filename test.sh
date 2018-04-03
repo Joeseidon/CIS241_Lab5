@@ -21,6 +21,6 @@ for f in "$@"; do
 	fi
 done
 
-[ -d ~/backup] && echo "Directory Exists" || mkdir ~/backup
+[ -d ~/backup ] && echo "Directory Exists" || mkdir ~/backup
 
 ls -ls --human-readable
