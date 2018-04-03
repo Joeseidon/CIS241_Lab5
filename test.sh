@@ -17,10 +17,10 @@ i = 0
 #Determine action for command line argument
 for f in "$@"; do
 	echo "$f"
-	if [[ "$f" = "-1" ]]
+	if [[ "$f" = "-l" ]]
 		then
-			i = 1
 			echo "Local Files and Directories:"
+			ls -l
 			
 	elif [[ "$f" = "-c" ]]
 		then
@@ -39,10 +39,6 @@ for f in "$@"; do
 	fi
 done
 
-if [[ i = 1 ]]
-	then
-		ls -las --human-readable
-fi
 echo "Attempting to make backup directory..."
 #Creates a backup folder in the home directory if it doesn't already exist 
 [ -d ~/backup ] && echo "Directory Exists" || mkdir ~/backup
