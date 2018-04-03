@@ -16,7 +16,6 @@ fi
 
 #Determine action for command line argument
 for f in "$@"; do
-	echo "$f"
 	if [[ "$f" = "-l" ]]
 		then
 			echo "Local Files and Directories:"
@@ -42,3 +41,11 @@ done
 echo "Attempting to make backup directory..."
 #Creates a backup folder in the home directory if it doesn't already exist 
 [ -d ~/backup ] && echo "Directory Exists" || mkdir ~/backup
+
+echo "Counting number of files and directories in the current path."
+echo "File and Directory Count:"
+#Locates all files (including hidden files) in the current directory and sub directories
+ls -Aq | wc -l
+echo "Memory Usage:"
+#Display the number of bytes used by files and directories in the current directory 
+find . -type f -mtime -30 -exec ls -l {} \; | awk '{ s+=$5 } END { print s }'
