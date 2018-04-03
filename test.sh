@@ -25,10 +25,11 @@ for f in "$@"; do
 		then
 			echo "File and Directory Count:"
 			#Locates all files (including hidden files) in the current directory and sub directories
-			ls -Aq | wc -l
+			ls -q | wc -l
 			echo "Memory Usage:"
 			#Display the number of bytes used by files and directories in the current directory 
-			find . -type f -mtime -30 -exec ls -l {} \; | awk '{ s+=$5 } END { print s }'
+			#find . -type f -mtime -30 -exec ls -l {} \; | awk '{ s+=$5 } END { print s }'
+			find . -type f -print0 | du -scb --files0-from=- | tail -n 1
 	elif [[ "$f" = "--help" ]]
 		then 
 			echo "To run this file, type sh followed by test.sh (this program)."
@@ -45,7 +46,7 @@ echo "Attempting to make backup directory..."
 echo "Counting number of files and directories in the current path."
 echo "File and Directory Count:"
 #Locates all files (including hidden files) in the current directory and sub directories
-ls -Aq | wc -l
+find . ! -name . -prune -print | grep -c /
 echo "Memory Usage:"
 #Display the number of bytes used by files and directories in the current directory 
 find . -type f -mtime -30 -exec ls -l {} \; | awk '{ s+=$5 } END { print s }'
