@@ -38,10 +38,12 @@ for f in "$@"; do
 	fi
 done
 
+echo " "
 echo "Attempting to make backup directory..."
 #Creates a backup folder in the home directory if it doesn't already exist 
 [ -d ~/backup ] && echo "Directory Exists" || mkdir ~/backup
 
+echo " "
 echo "Counting number of files and directories in the current path."
 echo "File and Directory Count:"
 #Locates all files (including hidden files) in the current directory and sub directories
