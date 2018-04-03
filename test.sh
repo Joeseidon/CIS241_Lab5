@@ -1,6 +1,6 @@
 #1/bin/bash
 
-if $# = 0
+if "$#" = 0
 	then 
 		echo "A command line argument is required"
 		exit 1
