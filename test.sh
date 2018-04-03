@@ -11,6 +11,7 @@ for f in "$@"; do
 	if test "$f" = "-1"
 		then
 			echo "L entered"
+			ls -las --human-readable
 	elif test"$f" = "-c"
 		then
 			echo "C entered"
