@@ -19,8 +19,9 @@ for f in "$@"; do
 	echo "$f"
 	if [[ "$f" = "-1" ]]
 		then
-			echo "Local Files and Directories:"
 			ls -las --human-readable
+			echo "Local Files and Directories:"
+			
 	elif [[ "$f" = "-c" ]]
 		then
 			echo "File and Directory Count:"
