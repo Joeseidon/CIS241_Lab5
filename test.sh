@@ -12,10 +12,10 @@ for f in "$@"; do
 		then
 			echo "L entered"
 			ls -las --human-readable
-	elif test"$f" = "-c"
+	elif [[ "$f" = "-c" ]]
 		then
 			echo "C entered"
-	elif test "$f" = "--help"
+	elif [[ "$f" = "--help" ]]
 		then 
 			echo "help entered"
 	fi
