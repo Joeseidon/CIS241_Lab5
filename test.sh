@@ -13,23 +13,23 @@ if [[ $# > 1 ]]
 		echo "Only one argument"
 		exit 1
 fi
-i = 0
+
 #Determine action for command line argument
 for f in "$@"; do
 	echo "$f"
 	if [[ "$f" = "-l" ]]
 		then
 			echo "Local Files and Directories:"
-			ls -l
+			ls -la
 			
 	elif [[ "$f" = "-c" ]]
 		then
 			echo "File and Directory Count:"
 			#Locates all files (including hidden files) in the current directory and sub directories
-			find .//. ! -name . -print | grep -c //
+			ls -Aq | wc -l
 			echo "Memory Usage:"
 			#Display the number of bytes used by files and directories in the current directory 
-			{ find .//. ! -name . -print "%s+"; echo 0; } | bc
+			find . -type f -mtime -30 -exec ls -l {} \; | awk '{ s+=$5 } END { print s }'
 	elif [[ "$f" = "--help" ]]
 		then 
 			echo "To run this file, type sh followed by test.sh (this program)."
