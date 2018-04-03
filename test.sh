@@ -13,13 +13,13 @@ if [[ $# > 1 ]]
 		echo "Only one argument"
 		exit 1
 fi
-
+i = 0
 #Determine action for command line argument
 for f in "$@"; do
 	echo "$f"
 	if [[ "$f" = "-1" ]]
 		then
-			
+			i = 1
 			echo "Local Files and Directories:"
 			
 	elif [[ "$f" = "-c" ]]
@@ -38,7 +38,11 @@ for f in "$@"; do
 			echo "-c, to count the files and display bytes used"
 	fi
 done
-ls -las --human-readable
+
+if [[ i = 1 ]]
+	then
+		ls -las --human-readable
+fi
 echo "Attempting to make backup directory..."
 #Creates a backup folder in the home directory if it doesn't already exist 
 [ -d ~/backup ] && echo "Directory Exists" || mkdir ~/backup
