@@ -28,7 +28,7 @@ for f in "$@"; do
 			find .//. ! -name . -print | grep -c //
 			echo "Memory Usage:"
 			#Display the number of bytes used by files and directories in the current directory 
-			{ find .//. -type f -name *.* -printf "%s+"; echo 0; } | bc
+			{ find .//. ! -name . -print "%s+"; echo 0; } | bc
 	elif [[ "$f" = "--help" ]]
 		then 
 			echo "To run this file, type sh followed by test.sh (this program)."
