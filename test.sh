@@ -8,7 +8,7 @@ fi
 
 for f in "$@"; do
 	echo "$f"
-	if test "$f" = "-1"
+	if [ "$f" -eq "-1" ]
 		then
 			echo "L entered"
 			ls -las --human-readable
